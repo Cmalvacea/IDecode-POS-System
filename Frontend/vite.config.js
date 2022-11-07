@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     open: true,
-    port: 3000
+    port: 4000
   }
 })

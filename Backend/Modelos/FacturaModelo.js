@@ -9,7 +9,11 @@ const FacturaSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Email: String,
+    Email: {
+        type: String,
+        required: false,
+        default: 'Ninguno'
+    },
     Telefono: {
         Marca: String,
         Modelo: String,
@@ -33,7 +37,7 @@ const FacturaSchema = new mongoose.Schema({
         Total: String
     }
 
-})
+});
 
 
 const Factura = mongoose.model('Factura', FacturaSchema)
