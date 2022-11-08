@@ -14,6 +14,10 @@ const FacturaSchema = new mongoose.Schema({
         required: false,
         default: 'Ninguno'
     },
+    NumeroCel: {
+        type: String,
+        required: true
+    },
     Telefono: {
         Marca: String,
         Modelo: String,
@@ -33,8 +37,23 @@ const FacturaSchema = new mongoose.Schema({
     Pago: {
         Revision: String,
         Reparacion: String,
-        Pendiente: String,
+        Pendiente: {
+            type: String,
+            required: false,
+            default: 'Nada'
+        },
         Total: String
+    },
+    Fechas: {
+        Recepcion: {
+            type: String,
+            required: true,
+        },
+        Entrega: {
+            type: Date,
+            required: false,
+            default: null
+        }
     }
 
 });

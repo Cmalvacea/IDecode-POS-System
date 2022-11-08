@@ -31,6 +31,10 @@ app.use(express.urlencoded({
 
 
 app.post('/Factura', FacturaServicio.CrearFactura)
+app.put('/Factura', FacturaServicio.ActualizarFactura)
+app.get('/Facturas', FacturaServicio.TraerFacturas)
+app.get('/Factura/:ref', FacturaServicio.TraerFacturaIndividual)
+
 
 
 
