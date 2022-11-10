@@ -29,7 +29,15 @@ app.use(express.urlencoded({
 }))
 
 
-
+app.post('/Login', (req, res) => {
+    const Usuario = req.body.Nombre
+    const Password = req.body.Contraseña
+    if(Usuario == process.env.USER && Password == process.env.PASSWORD) {
+        res.send('Bienvenido!')
+    } else {
+        res.status(401).send('Acceso denegado')
+    }
+})
 app.post('/Factura', FacturaServicio.CrearFactura)
 app.put('/Factura', FacturaServicio.ActualizarFactura)
 app.get('/Facturas', FacturaServicio.TraerFacturas)

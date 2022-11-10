@@ -1,5 +1,5 @@
 <template>
-    <form action="">
+    <form @submit.prevent="HandleLogin">
         <input type="text" name="" id="" placeholder="Usuario" v-model="Usuario.Nombre">
         <input type="text" name="" id="" placeholder="Contraseña" v-model="Usuario.Contraseña">
         <button>Ingresar</button>
@@ -7,8 +7,13 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 
 export default {
+    props: {
+      StartFunction: Function
+    },
     data() {
         return {
             Usuario: {
@@ -16,6 +21,17 @@ export default {
                 Contraseña: ''
             }
         }
+    },
+    methods: {
+      HandleLogin() {
+        axios.post('http://localhost:3000/Login', this.Usuario).then(Response => {
+          alert(Response.data)
+          this.StartFunction()
+        }).catch(Err => {
+          console.log(Err)
+          alert('Usuario o contraseña incorrectos, por favor intente de nuevo')
+        })
+      }
     }
 }
 

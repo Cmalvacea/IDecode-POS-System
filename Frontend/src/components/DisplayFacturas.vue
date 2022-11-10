@@ -25,7 +25,7 @@
         <input type="text" required placeholder="Total" v-model="Formulario.total">
       </div>
       <div></div>
-      <button>Crear</button>
+      <button>Actualizar</button>
       <div></div>
       <div></div>
       <button @click="DisplayUpdate = false">Cancelar</button>
@@ -36,29 +36,55 @@
 
     <div class="ListaFacturas">
         <div class="ListaFacturaReferencia">
-            <div>Código de referencia</div>
-            <div>Nombres</div>
-            <div>Detalles del equipo</div>
-            <div>Falla</div>
-            <div>Fecha de recepción</div>
+            <div><p>
+                Código de referencia
+            </p></div>
+            <div><p>
+                Nombres
+            </p></div>
+            <div><p>
+                Detalles del equipo
+            </p></div>
+            <div><p>
+                Falla
+            </p></div>
+            <div><p>
+                Fecha de recepción
+            </p></div>
         </div>
         <div class="Factura" v-for="f in Facturas" @click="TraerUnaFactura(f.CodigoReferencia)">
             <div>
-                {{f.CodigoReferencia}}
+                <p>
+                    {{f.CodigoReferencia}}
+                </p>
             </div>
             <div>
+                <p>
                 {{f.Nombre}}
                 {{f.Apellido}}
+                </p>
             </div>
             <div>
-                {{f.Telefono.Marca}}
-                {{f.Telefono.Modelo}}
+                <p>
+                    {{f.Telefono.Marca}}
+                    {{f.Telefono.Modelo}}
+                </p>
             </div>
             <div>
-                {{f.Falla_Declarada}}
+                <p>
+                    {{f.Falla_Declarada}}
+                </p>
             </div>
             <div>
-                {{f.Fechas.Recepcion}}
+                <p>
+                    {{f.Fechas.Recepcion}}
+                </p>
+            </div>
+            <div style="justify-content: space-evenly;">
+                <button style="color:blue"><ion-icon name="eye-outline"></ion-icon></button>
+                <button style="color:yellow"><ion-icon name="brush-outline"></ion-icon></button>
+                <button style="color:green"><ion-icon name="checkmark-outline"></ion-icon></button>
+                <button style="color:red"><ion-icon name="trash-outline"></ion-icon></button>
             </div>
         </div>
     </div>
@@ -142,7 +168,8 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+$Gridesign: 15% 15% 20% 20% 20% 10%;
 
 .LockScreen {
     position: absolute;
@@ -205,31 +232,36 @@ export default {
   }
 }
 
-.ListaFacturaReferencia {
-    display: grid;
-    grid-template-columns: 10% 20% 20% 30% 20%;
-    div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
 
 .ListaFacturas {
     background-color: white;
-    .Factura {
-        :hover{
-            background-color: red;
-            cursor: pointer;
-        }
+    .ListaFacturaReferencia, .Factura {
         display: grid;
-        grid-template-columns: 10% 20% 20% 30% 20%;
+        grid-template-columns: $Gridesign;
         div {
-            border: 1px solid black;
-            padding: 10px;
+            text-align: center;
+            border: 1px solid gainsboro;
             display: flex;
             align-items: center;
+            justify-content: center;
+
+            p {
+                font-family: 'Raleway', sans-serif;
+            }
         }
+    }
+
+    .ListaFacturaReferencia {
+        p {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    }
+
+    .Factura:hover {
+        background-color: gray;
+        cursor: pointer;
+        border: 1px solid gray;
     }
 }
 
